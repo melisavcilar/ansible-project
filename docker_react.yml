@@ -75,11 +75,11 @@
         dest: /home/ec2-user/react
 
     - name: remove container and image if exist
-      shell: "docker ps -q --filter 'name=oliver_react' && docker stop oliver_react && docker rm -fv oliver_react && docker image rm -f olivercw/react || echo 'Not Found'"
+      shell: "docker ps -q --filter 'name=melis_react' && docker stop melis_react && docker rm -fv melis_react && docker image rm -f meliscw/react || echo 'Not Found'"
 
     - name: build container image
       docker_image:
-        name: olivercw/react
+        name: meliscw/react
         build:
           path: /home/ec2-user/react
         source: build
@@ -87,8 +87,8 @@
 
     - name: create react docker container
       docker_container:
-        name: oliver_react
-        image: olivercw/react
+        name: melis_react
+        image: meliscw/react
         state: started
         ports:
           - "3000:3000"

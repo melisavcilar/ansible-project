@@ -79,11 +79,11 @@
         dest: /home/ec2-user/postgresql 
 
     - name: remove container and image if exist
-      shell: "docker ps -q --filter 'name=oliver_postgre' && docker stop oliver_postgre && docker rm -fv oliver_postgre && docker image rm -f olivercw/postgre || echo 'Not Found'" 
+      shell: "docker ps -q --filter 'name=melis_postgre' && docker stop melis_postgre && docker rm -fv melis_postgre && docker image rm -f meliscw/postgre || echo 'Not Found'" 
         
     - name: build container image
       docker_image:
-        name: olivercw/postgre
+        name: meliscw/postgre
         build:
           path: /home/ec2-user/postgresql 
         source: build
@@ -91,8 +91,8 @@
 
     - name: create postgresql docker container
       docker_container:
-        name: oliver_postgre
-        image: olivercw/postgre
+        name: melis_postgre
+        image: meliscw/postgre
         state: started
         ports:
           - "5432:5432"
